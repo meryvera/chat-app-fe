@@ -1,5 +1,5 @@
 # ChatAppFe
-Este projecto es el front end para chat app
+Este projecto es el front end para chat app- probando el gh actions
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 12.2.8.
 
 ## Development server
