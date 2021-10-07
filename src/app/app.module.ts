@@ -9,6 +9,11 @@ import { ChatBoxComponent } from './components/chat-box/chat-box.component';
 //import { SocketIoConfig, SocketIoModule } from 'ngx-socket-io';
 //const config: SocketIoConfig = { url: 'http://localhost:3000', options: {} };
 
+import { SocketIoConfig, SocketIoModule } from 'ngx-socket-io';
+const config: SocketIoConfig = { url: 'http://localhost:3000', options: {} };
+
+import { Socket } from 'ngx-socket-io';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -23,4 +28,6 @@ import { ChatBoxComponent } from './components/chat-box/chat-box.component';
   providers: [],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule { 
+  
+}
