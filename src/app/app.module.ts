@@ -3,6 +3,11 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { LoginComponent } from './components/login/login.component';
+import { ChatBoxComponent } from './components/chat-box/chat-box.component';
+
+//import { SocketIoConfig, SocketIoModule } from 'ngx-socket-io';
+//const config: SocketIoConfig = { url: 'http://localhost:3000', options: {} };
 
 import { SocketIoConfig, SocketIoModule } from 'ngx-socket-io';
 const config: SocketIoConfig = { url: 'http://localhost:3000', options: {} };
@@ -11,13 +16,14 @@ import { Socket } from 'ngx-socket-io';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    LoginComponent,
+    ChatBoxComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-
-    SocketIoModule.forRoot(config)
+    //SocketIoModule.forRoot(config)
   ],
   providers: [],
   bootstrap: [AppComponent]
