@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Socket } from 'ngx-socket-io';
 import { map } from 'rxjs/operators';
-import { SocketService } from 'src/app/services/socket.service';
+import { ChatBoxService } from 'src/app/services/chat-box.service';
 
 @Component({
   selector: 'app-chat-box',
@@ -9,21 +9,26 @@ import { SocketService } from 'src/app/services/socket.service';
   styleUrls: ['./chat-box.component.scss']
 })
 export class ChatBoxComponent implements OnInit {
+ 
   title = 'chat-app-fe';
   prueba:any;
+  text:string;
 
-  constructor(private socketService: SocketService) { }
+  constructor(public chat: ChatBoxService) {
+    this.text = "";
+   }
 
   ngOnInit(): void {
   }
 
-  // sendMessage(msg: string) {
-  //   this.socket.emit('chat message', msg);
-  // }
-  // getMessage() {
-  //   // this.prueba = this.socket.fromEvent('chat message').pipe(map((data:any) => data.msg));
-  //   // console.log(this.prueba);
-  //   return this.socket.fromEvent('chat message').pipe(map((data:any) => data.msg));
-  // }
+  sendMessage(){
+    let messageInfo = {
+      text: this.text,
+      messageType: 1
+    };
+    //una vez q tngo el objeto creado voy a usar el ss creado:
+    this.chat.sendMessage(messageInfo);
+    this.text = "";
+  }
 
 }

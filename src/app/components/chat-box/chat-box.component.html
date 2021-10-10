@@ -1,20 +1,12 @@
-<!-- <button (click)="sendMessage('Bienvenido')">
-    enviar mensaje
-  </button>
-  
-  <ul>
-    <li *ngFor="let nombreAca of getMessage()| async; index as i">
-      {{nombreAca}}
-    </li>
-  </ul> -->
+<article class="chatContainer">
+  <p [ngClass]="{local: message.messageType === 1 , remoto: message.messageType === 2}" 
+    class="local" *ngFor="let message of chat.chats">
+      {{message.text}}
+  </p>
+</article>
 
-<div class="chatContainer">
-  <p class="local">Mensaje LOCAL</p>
-  <br>
-  <p class="remoto">Mensaje REMOTO</p>
-
-</div>
-
-<div class="inputContainer">
-  <input type="text" placeholder="Escribe tu mensaje aquí...">
-</div>
+<article class="inputContainer">
+  <form (submit)="sendMessage()">
+    <input [(ngModel)]="text" [ngModelOptions]="{standalone: true}"  placeholder="Escribe tu mensaje aquí...">
+  </form>
+</article>
