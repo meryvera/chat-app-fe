@@ -4,6 +4,7 @@ import { SocketService } from './socket.service';
 @Injectable({
   providedIn: 'root'
 })
+
 export class ChatBoxService {
 
   chats = Array();

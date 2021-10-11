@@ -1,0 +1,16 @@
+<article class="loginContainer">
+  <form [formGroup]="signupForm" class='loginForm' (ngSubmit)="onSubmit() ">
+    <h2 class='loginFormTitle'>¡Regístrate a chat-job!</h2>
+    <label class='labelForm' for="email">Nombres: </label>
+    <input class='inputForm' id="name" type="text" formControlName="name">
+    <label class='labelForm' for="email">Email: </label>
+    <input class='inputForm' id="email" type="email" formControlName="email">
+    <label class='labelForm' for="password">Password: </label>
+    <input class='inputForm' id="password" type="text" formControlName="password">
+    <button class='buttonForm' type="submit" [disabled]="!signupForm.valid">Regístrate</button>
+    <a class="signUp" [routerLink]="['/login']" routerLinkActive="router-link-active" >Ingresa a tu cuenta</a> 
+  </form>
+<!--   <section class="signUp">
+    
+  </section> -->
+</article>

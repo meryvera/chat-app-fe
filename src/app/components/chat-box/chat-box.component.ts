@@ -1,6 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { Socket } from 'ngx-socket-io';
-import { map } from 'rxjs/operators';
 import { ChatBoxService } from 'src/app/services/chat-box.service';
 
 @Component({
@@ -16,7 +14,7 @@ export class ChatBoxComponent implements OnInit {
 
   constructor(public chat: ChatBoxService) {
     this.text = "";
-   }
+  }
 
   ngOnInit(): void {
   }

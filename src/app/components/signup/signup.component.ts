@@ -1,15 +1,15 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl } from '@angular/forms';
 import { Router } from '@angular/router';
-
 @Component({
-  selector: 'app-login',
-  templateUrl: './login.component.html',
-  styleUrls: ['./login.component.scss']
+  selector: 'app-signup',
+  templateUrl: './signup.component.html',
+  styleUrls: ['./signup.component.scss']
 })
-export class LoginComponent implements OnInit {
+export class SignupComponent implements OnInit {
 
-  loginForm = new FormGroup({
+  signupForm = new FormGroup({
+    name: new FormControl(''),
     email: new FormControl(''),
     password: new FormControl(''),
   });
@@ -21,8 +21,8 @@ export class LoginComponent implements OnInit {
 
   onSubmit() {
     // TODO: Use EventEmitter with form value
-    console.warn(this.loginForm.value);
-    this.router.navigate(['/chat']);
+    console.warn(this.signupForm.value);
+    
   }
 
 }

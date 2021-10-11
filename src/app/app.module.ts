@@ -6,6 +6,7 @@ import { AppComponent } from './app.component';
 import { LoginComponent } from './components/login/login.component';
 import { ChatBoxComponent } from './components/chat-box/chat-box.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { SignupComponent } from './components/signup/signup.component';
 
 //import { SocketIoConfig, SocketIoModule } from 'ngx-socket-io';
 //const config: SocketIoConfig = { url: 'http://localhost:3000', options: {} };
@@ -14,7 +15,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
   declarations: [
     AppComponent,
     LoginComponent,
-    ChatBoxComponent
+    ChatBoxComponent,
+    SignupComponent
   ],
   imports: [
     BrowserModule,
