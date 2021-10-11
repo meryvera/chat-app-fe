@@ -1,7 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup } from '@angular/forms';
-import { SocketService } from 'src/app/services/socket.service';
-import { ChatService } from 'src/app/services/chat-service.service';
+import { ChatBoxService } from 'src/app/services/chat-box.service';
 
 @Component({
   selector: 'app-chat-box',
@@ -9,33 +7,24 @@ import { ChatService } from 'src/app/services/chat-service.service';
   styleUrls: ['./chat-box.component.scss']
 })
 export class ChatBoxComponent implements OnInit {
-  
-  // textBox = new FormGroup({
-  //   text: new FormControl(''),
-  // });
-  text: any = "";
+  prueba:any;
+  text:string;
 
-  constructor(
-    private socketService: SocketService,
-    private chatService: ChatService
-    ) { }
+  constructor(public chat: ChatBoxService) {
+    this.text = "";
+  }
 
   ngOnInit(): void {
   }
 
-  sendMessage() {
-    //this.socketService.io.emit('chat message', msg);
+  sendMessage(){
     let messageInfo = {
-      text: this.text.value,
+      text: this.text,
       messageType: 1
     };
-    this.chatService.sendMsg(messageInfo);
-    this.text.value = [];
+    //una vez q tngo el objeto creado voy a usar el ss creado:
+    this.chat.sendMessage(messageInfo);
+    this.text = "";
   }
-  // getMessage() {
-  //   // this.prueba = this.socket.fromEvent('chat message').pipe(map((data:any) => data.msg));
-  //   // console.log(this.prueba);
-  //   return this.socket.fromEvent('chat message').pipe(map((data:any) => data.msg));
-  // }
 
 }
