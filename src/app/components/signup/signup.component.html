@@ -1,16 +1,30 @@
 <article class="loginContainer">
-  <form [formGroup]="signupForm" class='loginForm' (ngSubmit)="onSubmit() ">
-    <h2 class='loginFormTitle'>¡Regístrate a chat-job!</h2>
-    <label class='labelForm' for="email">Nombres: </label>
+  <form [formGroup]="signupForm" class='signupForm' (ngSubmit)="onSubmit() ">
+    <h2 class='signupFormTitle'>¡Regístrate a chat-job!</h2>
+
+    <div *ngIf="signupForm.invalid && signupForm.touched" class="alert alert-danger">
+      Completa correctamente los campos. Gracias
+    </div>
+
+    <div *ngIf="signupForm.get('name')?.errors">
+      <p *ngIf="signupForm.get('name')?.hasError('minlength')" class="alert alert-danger"> Es un mínimo de 2 caracteres para el nombre.</p>
+    </div>
+
+    <div *ngIf="signupForm.get('password')?.errors">
+      <p *ngIf="signupForm.get('password')?.hasError('minlength')" class="alert alert-danger"> Es un mínimo de 8 caracteres para el password.</p>
+    </div>
+
+    <label class='labelForm' for="name">Nombres: </label>
     <input class='inputForm' id="name" type="text" formControlName="name">
+    
     <label class='labelForm' for="email">Email: </label>
     <input class='inputForm' id="email" type="email" formControlName="email">
+    
     <label class='labelForm' for="password">Password: </label>
-    <input class='inputForm' id="password" type="text" formControlName="password">
+    <input class='inputForm' id="password" type="password" formControlName="password">
+
     <button class='buttonForm' type="submit" [disabled]="!signupForm.valid">Regístrate</button>
     <a class="signUp" [routerLink]="['/login']" routerLinkActive="router-link-active" >Ingresa a tu cuenta</a> 
   </form>
-<!--   <section class="signUp">
-    
-  </section> -->
+
 </article>

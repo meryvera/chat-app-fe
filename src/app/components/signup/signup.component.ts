@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormControl } from '@angular/forms';
+import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 @Component({
   selector: 'app-signup',
@@ -9,9 +9,9 @@ import { Router } from '@angular/router';
 export class SignupComponent implements OnInit {
 
   signupForm = new FormGroup({
-    name: new FormControl(''),
-    email: new FormControl(''),
-    password: new FormControl(''),
+    name: new FormControl('', [Validators.required, Validators.minLength(2)]),
+    email: new FormControl('', [Validators.required, Validators.email]),
+    password: new FormControl('', [Validators.required, Validators.minLength(8)]),
   });
   
   constructor(private router: Router) { }

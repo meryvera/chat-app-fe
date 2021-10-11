@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormControl } from '@angular/forms';
+import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 
 @Component({
@@ -10,8 +10,8 @@ import { Router } from '@angular/router';
 export class LoginComponent implements OnInit {
 
   loginForm = new FormGroup({
-    email: new FormControl(''),
-    password: new FormControl(''),
+    email: new FormControl('', Validators.email),
+    password: new FormControl('', Validators.required),
   });
   
   constructor(private router: Router) { }
@@ -19,7 +19,7 @@ export class LoginComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  onSubmit() {
+  logIn() {
     // TODO: Use EventEmitter with form value
     console.warn(this.loginForm.value);
     this.router.navigate(['/chat']);
