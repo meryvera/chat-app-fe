@@ -19,7 +19,7 @@ export class LoginComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  onSubmit() {
+  loginButton() {
     // TODO: Use EventEmitter with form value
     console.warn(this.loginForm.value);
   }

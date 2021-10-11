@@ -16,5 +16,16 @@
 </div>
 
 <div class="inputContainer">
-  <input type="text" placeholder="Escribe tu mensaje aquí...">
+  <form (ngSubmit)="sendMessage()">
+    <input [(ngModel)]="text" [ngModelOptions]="{standalone: true}" id="text" type="text"> <!-- [(ngModelOptions)]="{standalon: true}" -->
+  </form>
 </div>
+
+<!-- <form [formGroup]="textBox" (ngSubmit)="sendMessage()">
+
+  <label for="text"></label>
+  <input id="text" type="text" formControlName="text">
+
+  <button type="submit" [disabled]="!textBox.valid">Enviar</button>
+</form> -->
+

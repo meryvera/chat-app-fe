@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { Socket } from 'ngx-socket-io';
-import { map } from 'rxjs/operators';
+import { FormControl, FormGroup } from '@angular/forms';
 import { SocketService } from 'src/app/services/socket.service';
+import { ChatService } from 'src/app/services/chat-service.service';
 
 @Component({
   selector: 'app-chat-box',
@@ -9,17 +9,29 @@ import { SocketService } from 'src/app/services/socket.service';
   styleUrls: ['./chat-box.component.scss']
 })
 export class ChatBoxComponent implements OnInit {
-  title = 'chat-app-fe';
-  prueba:any;
+  
+  // textBox = new FormGroup({
+  //   text: new FormControl(''),
+  // });
+  text: any = "";
 
-  constructor(private socketService: SocketService) { }
+  constructor(
+    private socketService: SocketService,
+    private chatService: ChatService
+    ) { }
 
   ngOnInit(): void {
   }
 
-  // sendMessage(msg: string) {
-  //   this.socket.emit('chat message', msg);
-  // }
+  sendMessage() {
+    //this.socketService.io.emit('chat message', msg);
+    let messageInfo = {
+      text: this.text.value,
+      messageType: 1
+    };
+    this.chatService.sendMsg(messageInfo);
+    this.text.value = [];
+  }
   // getMessage() {
   //   // this.prueba = this.socket.fromEvent('chat message').pipe(map((data:any) => data.msg));
   //   // console.log(this.prueba);
