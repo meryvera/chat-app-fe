@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { UserService } from 'src/app/services/user.service';
+
 @Component({
   selector: 'app-signup',
   templateUrl: './signup.component.html',
@@ -14,15 +16,24 @@ export class SignupComponent implements OnInit {
     password: new FormControl('', [Validators.required, Validators.minLength(8)]),
   });
   
-  constructor(private router: Router) { }
+  constructor(
+    private router: Router, private userService: UserService) { }
 
   ngOnInit(): void {
   }
 
-  onSubmit() {
+  signUp() {
+    // const signUpInfo = this.signupForm.value;
+    // const newSignUpInfo = {
+    //   emailValue: signUpInfo.email,
+    //   nameValue: signUpInfo.name,
+    //   passwordInfo: signUpInfo.password
+    // }
     // TODO: Use EventEmitter with form value
-    console.warn(this.signupForm.value);
-    
+    console.log(this.signupForm.value);
+
+    this.userService.addUser(this.signupForm.value)
+    this.router.navigate(['/chat']);
   }
 
 }
