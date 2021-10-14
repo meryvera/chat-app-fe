@@ -1,5 +1,5 @@
 <article class="loginContainer">
-  <form [formGroup]="signupForm" class='signupForm' (ngSubmit)="onSubmit() ">
+  <form [formGroup]="signupForm" class='signupForm' (ngSubmit)="signUp() ">
     <h2 class='signupFormTitle'>¡Regístrate a chat-job!</h2>
 
     <div *ngIf="signupForm.invalid && signupForm.touched" class="alert alert-danger">
