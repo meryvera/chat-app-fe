@@ -1,6 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import jwtDecode from 'jwt-decode';
+import { AuthService } from 'src/app/services/auth.service';
+import { catchError} from 'rxjs/operators';
+import { throwError } from 'rxjs';
 
 @Component({
   selector: 'app-login',
@@ -14,15 +18,31 @@ export class LoginComponent implements OnInit {
     password: new FormControl('', Validators.required),
   });
   
-  constructor(private router: Router) { }
+  constructor(
+    private router: Router,
+    private authService: AuthService,
+    ) { }
 
   ngOnInit(): void {
   }
 
   logIn() {
-    // TODO: Use EventEmitter with form value
-    console.warn(this.loginForm.value);
-    this.router.navigate(['/chat']);
+    this.authService.loginUser(this.loginForm.value)
+    .pipe(
+      catchError((error)=>{
+        console.log('ERROR:', error);
+        return throwError(error);
+      })
+    ) 
+    .subscribe((response) => {                     
+      // const token: any = jwtDecode(response.token);
+      localStorage.setItem('newToken', response.token);
+      localStorage.getItem('newToken'); 
+
+      console.warn(this.loginForm.value);
+      this.router.navigate(['/chat']);
+   })   
+    
   }
 
 }

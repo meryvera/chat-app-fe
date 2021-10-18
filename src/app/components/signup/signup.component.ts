@@ -10,18 +10,21 @@ import { UserService } from 'src/app/services/user.service';
 })
 export class SignupComponent implements OnInit {
 
-  public signupForm! : FormGroup ;
+  public signupForm!: FormGroup;
 
+  
   
   constructor(
     private router: Router,
     private _formBuilder: FormBuilder,
     private userService: UserService) { 
-     this.signupForm = this._formBuilder.group({  
+
+      this.signupForm = this._formBuilder.group({
         name: new FormControl('', [Validators.required, Validators.minLength(2)]),
         email: new FormControl('', [Validators.required, Validators.email]),
         password: new FormControl('', [Validators.required, Validators.minLength(8)]),
-      });      
+      });
+
     }
 
   ngOnInit(): void {
@@ -37,8 +40,9 @@ export class SignupComponent implements OnInit {
     // TODO: Use EventEmitter with form value
     console.log(this.signupForm.value);
 
-    this.userService.addUser(this.signupForm.value).subscribe(data => {
-      console.log(data)
+    this.userService.addUser(this.signupForm.value)
+    .subscribe(data =>{
+      console.log(data);
     })
     this.router.navigate(['/chat']);
   }

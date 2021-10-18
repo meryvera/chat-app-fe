@@ -8,15 +8,16 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class UserService {
-  url:string = "http://localhost:3000/users";
+  public endpoint: string;
+  url = "http://localhost:3000";
 
   constructor(private http: HttpClient) {
+      this.endpoint = '/users'; // keyword?
   }
 
   addUser(newUser: UserModel): Observable<UserModel>{
-    return this.http.post<UserModel>(this.url, newUser);
+    return this.http.post<UserModel>(`${this.url}${this.endpoint}`, newUser);
   }
-
   // getAllUsers(): Observable<UserDetailModel[]>{
   //   return this.http.get<Array<UserDetailModel>>(`${this.url}${this.endpoint}`);
   // }
