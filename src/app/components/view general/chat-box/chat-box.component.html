@@ -1,12 +1,16 @@
-<article class="chatContainer">
-  <p [ngClass]="{local: message.messageType === 1 , remoto: message.messageType === 2}" 
-    class="local" *ngFor="let message of chat.chats">
-      {{message.text}}
-  </p>
-</article>
+<div class="d-flex flex-column">
+  <article class="chatContainer">
+    <p [ngClass]="{local: message.messageType === 1 , remoto: message.messageType === 2}" 
+      class="local" *ngFor="let message of chat.chats">
+        {{message.text}}
+    </p>
+  </article>
 
-<article class="inputContainer">
-  <form (submit)="sendMessage()">
-    <input [(ngModel)]="text" [ngModelOptions]="{standalone: true}"  placeholder="Escribe tu mensaje aquí...">
-  </form>
-</article>
+  <article class="inputContainer align-self-end">
+    <form (submit)="sendMessage()">
+      <input [(ngModel)]="text" [ngModelOptions]="{standalone: true}"  placeholder="Escribe tu mensaje aquí...">
+      <button class="btn btn-success ms-4">Enviar</button>
+    </form>
+  </article>
+</div>
+

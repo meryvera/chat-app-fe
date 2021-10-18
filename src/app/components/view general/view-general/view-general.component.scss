@@ -1,9 +1,18 @@
 
-body {
+.container-general {
     display: flex;
     //flex-direction: column;
 }
 .right-section {
     display: flex;
     flex-direction: column;
+    width: 30%;
+    height: 100vh;
+
+
 }
+.left-section {
+    width: 65%;
+    height: 100vh;
+}
+
