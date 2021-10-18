@@ -37,7 +37,9 @@ export class SignupComponent implements OnInit {
     // TODO: Use EventEmitter with form value
     console.log(this.signupForm.value);
 
-    this.userService.addUser(this.signupForm.value)
+    this.userService.addUser(this.signupForm.value).subscribe(data => {
+      console.log(data)
+    })
     this.router.navigate(['/chat']);
   }
 
