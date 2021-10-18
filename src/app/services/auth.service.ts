@@ -14,7 +14,7 @@ export class AuthService {
       this.endpoint = '/auth'; 
   }
 
-  addUser(data: AuthModel): Observable<Token>{
+  loginUser(data: AuthModel): Observable<Token>{
     return this.http.post<Token>(`${this.url}${this.endpoint}`, data);
   }
 }
