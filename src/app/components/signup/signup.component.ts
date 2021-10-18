@@ -42,9 +42,11 @@ export class SignupComponent implements OnInit {
 
     this.userService.addUser(this.signupForm.value)
     .subscribe(data =>{
-      console.log(data);
+      if (data) {
+        alert('Cuenta creada. Ahora, puedes hacer LogIn.')
+      }
     })
-    this.router.navigate(['/chat']);
+    this.router.navigate(['/login']);
   }
 
 }
