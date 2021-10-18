@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { FormGroup, FormControl, Validators, FormBuilder } from '@angular/forms';
 import { Router } from '@angular/router';
 import { UserService } from 'src/app/services/user.service';
 
@@ -10,14 +10,19 @@ import { UserService } from 'src/app/services/user.service';
 })
 export class SignupComponent implements OnInit {
 
-  signupForm = new FormGroup({
-    name: new FormControl('', [Validators.required, Validators.minLength(2)]),
-    email: new FormControl('', [Validators.required, Validators.email]),
-    password: new FormControl('', [Validators.required, Validators.minLength(8)]),
-  });
+  public signupForm! : FormGroup ;
+
   
   constructor(
-    private router: Router, private userService: UserService) { }
+    private router: Router,
+    private _formBuilder: FormBuilder,
+    private userService: UserService) { 
+     this.signupForm = this._formBuilder.group({  
+        name: new FormControl('', [Validators.required, Validators.minLength(2)]),
+        email: new FormControl('', [Validators.required, Validators.email]),
+        password: new FormControl('', [Validators.required, Validators.minLength(8)]),
+      });      
+    }
 
   ngOnInit(): void {
   }
