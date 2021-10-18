@@ -8,8 +8,8 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class UserService {
-  private endpoint: string;
-  url = "https://localhost:3000";
+  public endpoint: string;
+  url = "http://localhost:3000";
 
   constructor(private http: HttpClient) {
       this.endpoint = '/users'; // keyword?
