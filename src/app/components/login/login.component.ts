@@ -5,7 +5,6 @@ import jwtDecode from 'jwt-decode';
 import { AuthService } from 'src/app/services/auth.service';
 import { catchError} from 'rxjs/operators';
 import { throwError } from 'rxjs';
-
 import { SocketService } from 'src/app/services/socket.service';
 
 @Component({
@@ -24,7 +23,6 @@ export class LoginComponent implements OnInit {
     private router: Router,
     private authService: AuthService,
     private socketService: SocketService,
-
     ) { }
 
   ngOnInit(): void {
@@ -44,13 +42,16 @@ export class LoginComponent implements OnInit {
 
       localStorage.setItem('newToken', response.token);
       localStorage.getItem('newToken');
-      const auth =  localStorage.getItem('newToken')
+     // const auth =  localStorage.getItem('newToken')
 
-      let  socketServiceVarible = this.socketService.io;
-     socketServiceVarible.auth = ({auth});
+      // let  socketServiceVarible = this.socketService.io;
+      // socketServiceVarible.auth = ({auth});
 
-      console.log(socketServiceVarible)
+      // console.log(socketServiceVarible)
 
+      // console.log(this.socketService.io);
+      
+      console.warn(this.loginForm.value);
       this.router.navigate(['/chat']);
    })   
     
