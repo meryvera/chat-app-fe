@@ -7,6 +7,7 @@ import { ChatBoxService } from 'src/app/services/chat-box.service';
   styleUrls: ['./chat-box.component.scss']
 })
 export class ChatBoxComponent implements OnInit {
+  
   prueba:any;
   text:string;
 

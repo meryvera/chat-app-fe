@@ -9,18 +9,18 @@ export class ChatBoxService {
 
   chats = Array();
 
-  constructor(private socket:SocketService) { 
+  constructor(private socketService:SocketService) { 
     //ahora necesito que cuando esta clase se inicialice el socket esté escuchando
     this.onReceiveMessage();
   }
 
   sendMessage(messageInfo: any){
     this.chats.push(messageInfo);
-    this.socket.io.emit("sendMessage", messageInfo)
+    this.socketService.socket.emit("sendMessage", messageInfo)
   }
 
   onReceiveMessage(){
-    this.socket.io.on("receiveMessage", (messageInfo)=>{
+    this.socketService.socket.on("receiveMessage", (messageInfo)=>{
       messageInfo.messageType = 2;
       this.chats.push(messageInfo)
     })

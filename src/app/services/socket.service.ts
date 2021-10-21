@@ -5,15 +5,11 @@ import { io } from 'socket.io-client';
   providedIn: 'root'
 })
 export class SocketService {
-  io = io('http://localhost:3000',{
+  socket = io('http://localhost:3000',{
     withCredentials: true,
-    autoConnect: true //cuando esta se cree se conectara automaticament
+    //autoConnect: true //cuando esta se cree se conectara automaticament
   })
   constructor() {
-    // el cliente emite eventos hacia el servidor 
-    // this.io.emit('chat message', {msg:'Hola Kathy Angular'})
-    // this.io.on('chat message',(objet)=>{
-    //   alert(objet.msg)
-    // })
+
   }
 }
