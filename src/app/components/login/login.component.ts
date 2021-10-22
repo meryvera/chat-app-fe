@@ -37,11 +37,11 @@ export class LoginComponent implements OnInit {
         return throwError(error);
       })
     ) 
-    .subscribe((response) => {                     
-      // const token: any = jwtDecode(response.token);
+    .subscribe((response) => {  
+  
       localStorage.setItem('newToken', response.token);
-      localStorage.getItem('newToken'); 
-
+      localStorage.getItem('newToken');
+     // const auth =  localStorage.getItem('newToken')
       // const socket2 = io({
       //   auth: {
       //     token: response
