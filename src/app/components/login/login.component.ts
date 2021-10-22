@@ -41,20 +41,6 @@ export class LoginComponent implements OnInit {
   
       localStorage.setItem('newToken', response.token);
       localStorage.getItem('newToken');
-     // const auth =  localStorage.getItem('newToken')
-      // const socket2 = io({
-      //   auth: {
-      //     token: response
-      //   }
-      // });
-      //console.log('no entiendoooooo =( pero mando socket 2', socket2)//11
-        // Socket {connected: false, disconnected: true, receiveBuffer: Array(0), sendBuffer: Array(0), ids: 0, …}
-      // client-side
-
-      // console.log(this.socketService) // {io: Socket}
-      // console.log(this.socketService.socket) // 222 
-        // Socket {connected: true, disconnected: false, receiveBuffer: Array(0), sendBuffer: Array(0), ids: 0, …}
-     /*  console.log(this.socket.io.Socket) */
       console.warn(this.loginForm.value);
       this.router.navigate(['/chat']);
    })   
