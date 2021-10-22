@@ -1,7 +1,5 @@
 <h2>Usuarios conectados</h2>
 
-<button class="btn btn-warning mb-2">Mery</button>
+<button class="btn btn-warning mb-2" *ngFor="let arrayList of client; index as i">{{arrayList}}</button>
 <br>
-<button class="btn btn-warning mb-2">Carlis</button>
-<br>
-<button class="btn btn-warning mb-2">Yess</button>
+
