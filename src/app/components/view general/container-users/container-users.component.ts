@@ -8,7 +8,7 @@ import { SocketService } from 'src/app/services/socket.service';
 })
 export class ContainerUsersComponent implements OnInit {
   
-  //socketConnectedUsers:Array<any>=[];
+  socketConnectedUsers:Array<any>=[];
   client:any;
 
   constructor(private socketService:SocketService) {
@@ -17,13 +17,13 @@ export class ContainerUsersComponent implements OnInit {
 
   ngOnInit(): void {
     this.socketService.socket.on("connectedUsers", (client: any)=>{
-      // this.socketConnectedUsers.push(client);
-      // console.log(this.socketConnectedUsers)
+      this.socketConnectedUsers.push(client);
+      console.log(this.socketConnectedUsers)
       this.client = client;
     })
   }
 
-  // ngOnChange(): void {
+  // ngOnChanges(): void {
   //   this.socketService.socket.on("connectedUsers", (client: any)=>{
   //     // this.socketConnectedUsers.push(client);
   //     // console.log(this.socketConnectedUsers)
