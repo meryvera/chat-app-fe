@@ -22,31 +22,33 @@ export class ContainerUsersComponent implements OnInit {
 
   ngOnInit(): void {
     this.socketService.socket.on("connectedUsers", (client: any)=>{
-
+      // client.filter(( e: any )=> e.userID);
       //this.plusOneItem(client)
 
       // this.socketConnectedUsers.push(client);
       // console.log(this.socketConnectedUsers)
-      console.log(client.filter(( e: any )=> e.userID));
-      console.log(client)
+      var result =  client.map((e: any) => {  
+
+        return e.userID;
+
+      }).filter( (e: any) => {
+        let arrayUnique = new Set(e.userID);
+        console.log(arrayUnique)
+        let uniqueUsersArray = [...arrayUnique]
+        return uniqueUsersArray;
+      });
+      console.log(result)
 
       this.client = client.map(( e: any )=> e.userID);
 
 
       this.uniqueUsers = new Set(this.client);
       this.uniqueUsersArray = [...this.uniqueUsers]
-      console.log(this.uniqueUsersArray.filter(( e: any )=> e.userID));
-
 
       for (let obj of client) {
-        console.log(obj.userID)
-      this.userIdItem = this.uniqueUsersArray.filter(( userId: any) => {
-        console.log(userId)
-        userId === obj.userID
-        
-      } )
-        
+        this.userIdItem = this.uniqueUsersArray.filter(( userId: any) => { userId === obj.userID  } )
       }
+
 
       // client.filter( (obj: any)=> { 
       //   obj.userID === this.uniqueUsersArray
