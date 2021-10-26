@@ -10,10 +10,6 @@ export class SocketService {
     autoConnect: true
   })
   constructor() {
-    // el cliente emite eventos hacia el servidor 
-    this.io.emit('chat message', {msg:'Hola Kathy Angular'})
-    this.io.on('chat message',(objet)=>{
-      alert(objet.msg)
-    })
+
   }
 }
