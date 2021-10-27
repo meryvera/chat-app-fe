@@ -10,6 +10,8 @@ import { ChatBoxService } from 'src/app/services/chat-box.service';
   styleUrls: ['./view-general.component.scss']
 })
 export class ViewGeneralComponent implements OnInit {
+  userName: any;
+
 
   constructor(
     private router: Router,
@@ -19,10 +21,17 @@ export class ViewGeneralComponent implements OnInit {
     }
 
   ngOnInit(): void {
-    // console.log(this.socketService.socket)
-    // console.log(this.socketService.socket.disconnected)
+
+
+
+
     this.socketService.socketConnect();
     this.chatBoxService.onReceiveMessage();
+
+
+    this.socketService.socket.on("userName", (client: any)=>{
+      this.userName = client;
+     })
 
 
   }
@@ -32,29 +41,9 @@ export class ViewGeneralComponent implements OnInit {
   }
 
   logOut(){
-    //window.reload;
 
     localStorage.removeItem('newToken');
-    // this.socketService.socket.disconnected = true;
-    // this.socketService.socket.connected = false;
-
-    // this.socketService.socket.on('disconnect', (reason) => {
-    //   console.log(reason)
-    // });
-
-    //this.socketService.socket.disconnect();
-    // const socket = io({
-    //   query: { token: 'cde' }
-    // });
-    // socket.on("disconnect", () => {
-    //   socket.connect();
-    // });
-
-    // else the socket will automatically try to reconnect
     this.router.navigate(['/login']);
-
-
-   // console.log(this.socketService.socket)
 
   }
 
