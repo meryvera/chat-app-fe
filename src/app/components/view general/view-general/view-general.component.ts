@@ -10,6 +10,8 @@ import { ChatBoxService } from 'src/app/services/chat-box.service';
   styleUrls: ['./view-general.component.scss']
 })
 export class ViewGeneralComponent implements OnInit {
+  userName: any;
+
 
   constructor(
     private router: Router,
@@ -19,8 +21,17 @@ export class ViewGeneralComponent implements OnInit {
     }
 
   ngOnInit(): void {
+
+
+
+
     this.socketService.socketConnect();
     this.chatBoxService.onReceiveMessage();
+
+
+    this.socketService.socket.on("userName", (client: any)=>{
+      this.userName = client;
+     })
 
 
   }
