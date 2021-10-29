@@ -1,4 +1,9 @@
 <div class="d-flex flex-column">
+
+  <p>
+    Today's item: {{item}}
+  </p>
+
   <article class="chatContainer">
     <p [ngClass]="{local: message.messageType === 1 , remoto: message.messageType === 2}" 
       class="local" *ngFor="let message of chat.chats">
@@ -13,4 +18,5 @@
     </form>
   </article>
 </div>
+
 

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input  } from '@angular/core';
 import { ChatBoxService } from 'src/app/services/chat-box.service';
 
 @Component({
@@ -8,6 +8,8 @@ import { ChatBoxService } from 'src/app/services/chat-box.service';
 })
 export class ChatBoxComponent implements OnInit {
   
+  @Input() item: any;
+
   prueba:any;
   text:string;
 

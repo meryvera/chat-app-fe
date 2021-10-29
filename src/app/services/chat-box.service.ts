@@ -25,4 +25,9 @@ export class ChatBoxService {
       this.chats.push(messageInfo)
     })
   }
+
+  receiveMessagePrivate(){
+    this.socketService.socket
+  }
+
 }
