@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { SocketService } from 'src/app/services/socket.service';
 
 @Component({
@@ -8,18 +8,21 @@ import { SocketService } from 'src/app/services/socket.service';
 })
 export class ContainerUsersComponent implements OnInit {
   
-  // socketConnectedUsers:Array<any>=[];
+  @Output() newItemEvent = new EventEmitter<string>();
+  
   client:any;
 
-  constructor(private socketService:SocketService) {
-    
+  constructor(private socketService:SocketService) {  
   }
 
   ngOnInit(): void {
-    
     this.socketService.socket.on("connectedUsers", (client: any)=>{
       this.client = client;   
-        
     })
   }
+
+  addNewItem(value: string) {
+    this.newItemEvent.emit(value);
+  }
+
 }

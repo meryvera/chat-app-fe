@@ -21,19 +21,11 @@ export class ViewGeneralComponent implements OnInit {
     }
 
   ngOnInit(): void {
-
-
-
-
     this.socketService.socketConnect();
     this.chatBoxService.onReceiveMessage();
-
-
     this.socketService.socket.on("userName", (client: any)=>{
       this.userName = client;
      })
-
-
   }
 
   ngOnDestroy(): void {
@@ -41,10 +33,19 @@ export class ViewGeneralComponent implements OnInit {
   }
 
   logOut(){
-
     localStorage.removeItem('newToken');
     this.router.navigate(['/login']);
+  }
 
+  privateChat(){
+    console.log('componente papá');
+    
+  }
+
+  items = ['item1'];
+  currentItem = 'Television';
+  addItem(newItem: string) {
+    this.items.push(newItem);
   }
 
 }
