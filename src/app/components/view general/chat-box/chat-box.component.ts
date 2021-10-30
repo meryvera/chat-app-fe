@@ -8,16 +8,18 @@ import { ChatBoxService } from 'src/app/services/chat-box.service';
 })
 export class ChatBoxComponent implements OnInit {
   
-  @Input() item: any;
+  @Input() items: any;
 
-  prueba:any;
   text:string;
 
   constructor(public chat: ChatBoxService) {
     this.text = "";
+    
   }
 
   ngOnInit(): void {
+    console.log('20', this.items);
+
   }
 
   sendMessage(){
