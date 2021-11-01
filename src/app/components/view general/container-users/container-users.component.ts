@@ -8,21 +8,22 @@ import { SocketService } from 'src/app/services/socket.service';
 })
 export class ContainerUsersComponent implements OnInit {
   
-  @Output() newItemEvent = new EventEmitter<string>();
+  @Output() privateChat = new EventEmitter<any>();
   
-  client:any;
+  clients:any;
 
   constructor(private socketService:SocketService) {  
   }
 
   ngOnInit(): void {
     this.socketService.socket.on("connectedUsers", (client: any)=>{
-      this.client = client;   
+      console.log(client);     
+      this.clients = client;   
     })
   }
 
-  addNewItem(value: string) {
-    this.newItemEvent.emit(value);
+  privateChatChild(value: any) {
+    this.privateChat.emit(value);
   }
 
 }

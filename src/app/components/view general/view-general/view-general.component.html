@@ -1,21 +1,21 @@
 <article class="container-general ">  
-    <ul>
-        <li *ngFor="let item of items">{{item}}</li>
-      </ul>
+   
     <section class="left-section py-4 px-4 ">
         <h2 class="userNameConnectText">usuario conectado:  {{userName}}</h2>
 
         <button class="btn btn-danger" (click)="logOut()">Salir</button>
         
         <app-chat-box 
-        [item]="items"
+        [items]="items"
         ></app-chat-box>
 
     </section>
     <section class="right-section py-4 px-4 justify-content-between ">
         <app-container-channel></app-container-channel>
+        
         <app-container-users 
-        (newItemEvent)="addItem($event)"
+        (privateChat)="privateChatParent($event)"
         ></app-container-users>
+
     </section>
 </article>

@@ -11,13 +11,14 @@ import { ChatBoxService } from 'src/app/services/chat-box.service';
 })
 export class ViewGeneralComponent implements OnInit {
   userName: any;
-
+  items:any;
 
   constructor(
     private router: Router,
     private socketService: SocketService,
     private chatBoxService: ChatBoxService,
     ) {
+      this.items={};
     }
 
   ngOnInit(): void {
@@ -26,6 +27,7 @@ export class ViewGeneralComponent implements OnInit {
     this.socketService.socket.on("userName", (client: any)=>{
       this.userName = client;
      })
+    this.privateChatParent;
   }
 
   ngOnDestroy(): void {
@@ -37,15 +39,9 @@ export class ViewGeneralComponent implements OnInit {
     this.router.navigate(['/login']);
   }
 
-  privateChat(){
-    console.log('componente papá');
-    
-  }
-
-  items = ['item1'];
-  currentItem = 'Television';
-  addItem(newItem: string) {
-    this.items.push(newItem);
+  privateChatParent(newItem: any) {
+    this.items = newItem;
+    console.log('44',this.items);
   }
 
 }
