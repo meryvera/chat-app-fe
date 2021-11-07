@@ -1,4 +1,4 @@
-import { Component, OnInit, Input  } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { ChatBoxService } from 'src/app/services/chat-box.service';
 
 @Component({
@@ -7,19 +7,14 @@ import { ChatBoxService } from 'src/app/services/chat-box.service';
   styleUrls: ['./chat-box.component.scss']
 })
 export class ChatBoxComponent implements OnInit {
-  
-  @Input() items: any;
-
+  prueba:any;
   text:string;
 
   constructor(public chat: ChatBoxService) {
     this.text = "";
-    
   }
 
   ngOnInit(): void {
-    console.log('20', this.items);
-
   }
 
   sendMessage(){

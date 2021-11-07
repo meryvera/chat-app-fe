@@ -19,4 +19,24 @@ export class UserService {
     return this.http.post<UserModel>(`${this.url}${this.endpoint}`, newUser);
   }
 
+  // getAllUsers(): Observable<UserDetailModel[]>{
+  //   return this.http.get<Array<UserDetailModel>>(`${this.url}${this.endpoint}`);
+  // }
+
+  // getUserId(uid: string, token: Token){
+  //     return this.http.post<IUserModel>(`${this.url}${this.endpoint}/${uid}`, {
+  //         headers: new HttpHeaders({
+  //           'Content-Type':  'application/json',
+  //           Authorization: `Bearer ${token}`
+  //         })
+  //     }
+  //   );
+  // }
+
+  // getCurrentUser(uid: string){
+  //   return this.http.get<UserDetailModel>(`${this.url}${this.endpoint}/${uid}`)
+  // }
+
+  
+
 }
