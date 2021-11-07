@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { SocketService } from 'src/app/services/socket.service';
-import { io } from 'socket.io-client';
 import { ChatBoxService } from 'src/app/services/chat-box.service';
 
 @Component({
